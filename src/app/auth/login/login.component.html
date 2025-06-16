@@ -1,0 +1,24 @@
+<section class="d-flex flex-column  mx-auto">
+    <img src="/images/Logo.svg" class="img-fluid " alt="logo">
+    <div class="form">
+        <span class="welcome">Welcome back!</span>
+        <h1>Login to your account</h1>
+        <form>
+            <div class="group_input">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control rounded-2 py-3" id="email" placeholder="john@mail.com">
+            </div>
+            <div class="group_input position-relative">
+                <label for="password" class="form-label">Password</label>
+                <input [type]="isShowPass?'text':'Password'" class="form-control rounded-2 py-3 mb-2" id="password" placeholder="••••••••">
+                <i [class]="isShowPass?'bi bi-eye-fill':'bi bi-eye-slash-fill '" class="position-absolute top-50 translate-middle-y end-10 fs-4" (click)="showPass()"></i>
+                <input class="check_remember form-check-input me-2" type="checkbox">
+                <label class="remember">Remember Me</label>
+            </div>
+        </form>
+    </div>
+    <div class="btn_login d-flex flex-column gap-3">
+        <button class="btn w-100 py-1">Login</button>
+        <button class="btn w-100 py-1">Register</button>
+    </div>
+</section>
