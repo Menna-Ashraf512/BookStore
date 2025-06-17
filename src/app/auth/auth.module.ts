@@ -7,6 +7,7 @@ import { AuthComponent } from './auth.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path:'',component:AuthComponent,children:[
@@ -31,6 +32,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ]
 })
