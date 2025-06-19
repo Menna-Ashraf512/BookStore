@@ -24,7 +24,7 @@
                     class="form-control rounded-2 py-3 mb-2" id="password" [class]="{
                 'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched,
                  'is-valid': loginForm.get('password')?.valid && loginForm.get('password')?.touched }"
-                  placeholder="••••••••">
+                  placeholder="Enter your password">
                 <i [class]="isShowPass?'bi bi-eye-fill':'bi bi-eye-slash-fill '"
                     class="position-absolute top-50 translate-middle-y end-10 fs-4" (click)="showPass()"></i>
                 <input class="check_remember form-check-input me-2" type="checkbox" >
@@ -33,7 +33,11 @@
         </form>
     </div>
     <div class="btn_login d-flex flex-column gap-3">
-        <button (click)="send(loginForm)" class="btn w-100 py-1">Login</button>
+        <button (click)="send(loginForm)" class="btn w-100 py-1">
+@if (isLoading) {
+            <i class="spinner-border spinner-border-sm mb-1 me-2"></i>
+}
+            Login</button>
         <button class="btn w-100 py-1" routerLink="/auth/register">Register</button>
     </div>
 </section>

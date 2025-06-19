@@ -1,8 +1,8 @@
 <section class="d-flex flex-column  mx-auto">
     <img src="/images/Logo.svg" class="img-fluid " alt="logo">
     <div class="form">
-        <span class="welcome">Welcome back!</span>
-        <h1>Login to your account</h1>
+        <span class="welcome">Create new account</span>
+        <h1>Register</h1>
         @if(errorMessage){
         <div class="alert alert-danger" role="alert">
             <span>
@@ -10,28 +10,63 @@
             </span>
         </div>
         }
-        <form [formGroup]="loginForm" class="needs-validation">
+        <form [formGroup]="registerForm" class="needs-validation">
+            <div class="group_input d-flex">
+                <div class="col-md-6 pe-2">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input formControlName="first_name" type="text" class="form-control  rounded-2 py-3" id="firstName"
+                        [class]="{
+                'is-invalid': registerForm.get('first_name')?.invalid && registerForm.get('first_name')?.touched,
+                 'is-valid': registerForm.get('first_name')?.valid && registerForm.get('first_name')?.touched
+                 }" placeholder="John Doe">
+                </div>
+                <div class="col-md-6 ps-2">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input formControlName="last_name" type="text" class="form-control rounded-2 py-3" id="lastName"
+                        [class]="{
+                'is-invalid': registerForm.get('last_name')?.invalid && registerForm.get('last_name')?.touched,
+                 'is-valid': registerForm.get('last_name')?.valid && registerForm.get('last_name')?.touched
+                 }" placeholder="John Doe">
+                </div>
+            </div>
             <div class="group_input">
                 <label for="email" class="form-label">E-mail</label>
                 <input formControlName="email" type="email" class="form-control rounded-2 py-3" id="email" [class]="{
-                'is-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched,
-                 'is-valid': loginForm.get('email')?.valid && loginForm.get('email')?.touched
-                 }"  placeholder="john@mail.com">
+                'is-invalid': registerForm.get('email')?.invalid && registerForm.get('email')?.touched,
+                 'is-valid': registerForm.get('email')?.valid && registerForm.get('email')?.touched
+                 }" placeholder="john@mail.com">
             </div>
             <div class="group_input position-relative">
                 <label for="password" class="form-label">Password</label>
                 <input formControlName="password" [type]="isShowPass?'text':'Password'"
                     class="form-control rounded-2 py-3 mb-2" id="password" [class]="{
-                'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched,
-                 'is-valid': loginForm.get('password')?.valid && loginForm.get('password')?.touched }"
-                  placeholder="••••••••">
+                'is-invalid': registerForm.get('password')?.invalid && registerForm.get('password')?.touched,
+                 'is-valid': registerForm.get('password')?.valid && registerForm.get('password')?.touched }"
+                    placeholder="Enter your password">
                 <i [class]="isShowPass?'bi bi-eye-fill':'bi bi-eye-slash-fill '"
                     class="position-absolute top-50 -translate-middle-y end-10 fs-4" (click)="showPass()"></i>
+            </div>
+            <div class="group_input">
+                <label for="role" class="form-label">Role</label>
+                <select id="role" formControlName="role" class="form-select form-select-lg mb-3">
+                    <option value="" disabled>Choose a role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Customer">Customer</option>
+                </select>
+                @if (registerForm.get('role')?.invalid && registerForm.get('role')?.touched) {
+                <small class="alert alert-danger">choose your role</small>
+                }
             </div>
         </form>
     </div>
     <div class="btn_login d-flex flex-column gap-3">
-        <button (click)="send(loginForm)" class="btn w-100 py-1">Login</button>
-        <button class="btn w-100 py-1">Register</button>
+        <button [disabled]="registerForm.invalid" (click)="register(registerForm)" class="btn w-100 py-1">
+            @if (isLoading) {
+            <i class="spinner-border spinner-border-sm mb-1 me-2"></i>
+            }
+            Register
+        </button>
+
+        <button routerLink="/auth/login" class="btn w-100 py-1">Login</button>
     </div>
 </section>
