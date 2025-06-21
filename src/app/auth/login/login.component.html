@@ -1,5 +1,5 @@
 <section class="d-flex flex-column  mx-auto">
-    <img src="/images/Logo.svg" class="img-fluid " alt="logo">
+    <img src="images/Logo.svg" class="img-fluid " alt="logo">
     <div class="form">
         <span class="welcome">Welcome back!</span>
         <h1>Login to your account</h1>
@@ -33,7 +33,7 @@
         </form>
     </div>
     <div class="btn_login d-flex flex-column gap-3">
-        <button (click)="send(loginForm)" class="btn w-100 py-1">
+        <button [disabled]="loginForm.invalid" (click)="send(loginForm)" class="btn w-100 py-1">
 @if (isLoading) {
             <i class="spinner-border spinner-border-sm mb-1 me-2"></i>
 }
