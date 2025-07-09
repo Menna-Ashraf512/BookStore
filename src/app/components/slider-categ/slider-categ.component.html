@@ -1,0 +1,37 @@
+<section class="category-section container py-5">
+  <div class="text-start mb-4">
+    <h6 class="text-danger">Categories</h6>
+    <div class="d-flex justify-content-between">
+      <h2>Explore our Top Categories</h2>
+      <!-- Navigation arrows -->
+      <div class="d-flex gap-4">
+        <button class="nav prev" (click)="prevSlide()"><i class="bi bi-arrow-left"></i></button>
+        <button class="nav next" (click)="nextSlide()"><i class="bi bi-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+<div class="slider py-4">
+  <div class="container">
+    <div class="slider_info">
+
+      @for (group of groupedSlides; track $index) {
+        <div class="slide row gap-4" [class.active]="$index === currentIndex">
+
+          @for (book of group; track book._id) {
+            <div class="col col-sm-6 col-md-3">
+              <img src="images/category.png" class="img-fluid rounded" alt="Book cover" />
+              <h2 class="title">{{ book.title }}</h2>
+            </div>
+          }
+
+        </div>
+      }
+
+    </div>
+  </div>
+</div>
+
+  <div class="text-center">
+    <button class="btn btn-outline-dark">VIEW MORE →</button>
+  </div>
+</section>

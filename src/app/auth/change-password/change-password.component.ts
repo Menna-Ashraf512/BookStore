@@ -45,8 +45,6 @@ export class ChangePasswordComponent {
     this.isLoading = true;
     this._authService.changePass(data.value).subscribe({
       next: (res) => {
-         const token =localStorage.getItem('userToken')
-        console.log(token)
         console.log(res)
         this.successMessage = res.message;
         this.changePassForm.reset();

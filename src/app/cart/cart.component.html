@@ -1,1 +1,108 @@
-<p>cart works!</p>
+<section>
+    <div class="header text-center py-4">
+        <h3 class="m-0">HOME / CART </h3>
+    </div>
+    <div class="container my-5">
+        <div class="row g-5  mb-5">
+            <!-- Products Table -->
+            <div class="col-lg-8">
+                <div class="tablePro rounded-3 p-3">
+                    <h5 class="mb-3 primary_color">Products Details</h5>
+                    <div class="table-responsive">
+                        <table class="table align-middle text-center">
+                            <thead class="border-bottom border-top">
+                                <tr>
+                                    <th>Num</th>
+                                    <th>Book</th>
+                                    <th>Amount</th>
+                                    <th>Cost</th>
+                                    <th>Subtotal</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                @for (item of products; track item.res._id) {
+                                    <tr>
+                                        <td class="fs-4">0{{$index+1}}.</td>
+                                        <td><img src="images/bookSlider.png" width="80px" alt="Book Cover"></td>
+                                        <td>
+                                            <div class="amount d-flex justify-content-center align-items-center">
+                                                <button class="btn btn-sm"(click)="decreaseQuantity(item)">-</button>
+                                                    <span class="btn btn-sm rounded-0 ps-4 pe-5">{{item.quantity}}</span>
+                                                <button class="btn btn-sm"(click)="increaseQuantity(item)">+</button>
+                                            </div>
+                                        </td>
+                                        <td>{{item.res.price}} AED</td>
+                                        <td>{{item.res.price * item.quantity}} AED</td>
+                                        <td>
+                                            <button class="btn" (click)="deleteItem(item.res._id)"> 
+                                                <i class="bi bi-x-square fs-4 delete"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="col-lg-3 mx-auto">
+                <div class="cart py-3 border rounded-4">
+                    <h5 class="pb-2 mb-3 border-bottom px-3">Cart Total Cost</h5>
+                    <ul class="d-flex flex-column gap-3 justify-content-between p-0">
+                        <li class="d-flex border-bottom justify-content-between">
+                            <span class="px-3">Total</span>
+                            <strong class="px-3">{{total}} AED</strong>
+                        </li>
+                        <li class="d-flex border-bottom justify-content-between">
+                            <span class="px-3">Tax</span>
+                            <strong class="px-3">{{Tax}} AED</strong>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <span class="px-3">Total Cost</span>
+                            <strong class="px-3">{{totalCost || 0}} AED</strong>
+                        </li>
+                    </ul>
+                </div>
+                <button class="checkOut btn my-5  py-2 w-100">Proceed<i class="bi bi-cart-plus-fill ms-2"></i></button>
+            </div>
+        </div>
+
+        <!-- Shipping Data -->
+        <div class="shipping rounded-3 w-75 p-4">
+            <h5 class="mb-4">Shipping Data</h5>
+            <form>
+                <div class="row g-3">
+                    <div class="col-md-6 mb-3">
+                        <label for="name">User Name</label>
+                        <input id="name" type="text" class="form-control" placeholder="User Name">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="email">E-mail</label>
+                        <input id="email" type="email" class="form-control" placeholder="john@mail.com">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="country">Country</label>
+                        <input id="country" type="text" class="form-control" placeholder="egypt" >
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="city">City</label>
+                        <input id="city" type="text" class="form-control" placeholder="maddi" >
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="address">Address</label>
+                        <input id="address" type="text" class="form-control" placeholder="211,street " >
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="phone">Phone Number</label>
+                        <input id="phone" type="text" class="form-control" placeholder="0117645366252" >
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

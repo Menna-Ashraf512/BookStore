@@ -1,0 +1,109 @@
+.newsletter-section {
+    background: #FCEBEA;
+    overflow: hidden;
+
+    .text_info {
+        background: #ED553B;
+        h3 {
+            font-weight: 700;
+            font-size: 56px;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+
+        }
+
+        p {
+            font-weight: 500;
+            font-size: 20px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .input_sub {
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            padding-inline: 10px;
+
+            .input_group {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                span i {
+                    color: #6C777C;
+                }
+
+                input {
+                    border: none;
+
+                    &:focus-visible {
+                        box-shadow: none;
+                    }
+                }
+
+                .btn {
+                    padding-inline: 30px;
+                    padding-block: 15px;
+                    background: #ED553B;
+                    font-weight: 700;
+                    color: #fff;
+                    letter-spacing: 1px;
+                    border-radius: 0px;
+
+                }
+            }
+        }
+    }
+}
+
+.squares-pattern {
+    display: grid;
+    grid-template-columns: repeat(5, 10px);
+    gap: 10px;
+    position: absolute;
+    z-index: 0;
+
+    span {
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+
+    }
+}
+
+
+.squares-pattern-right {
+    @extend .squares-pattern;
+    bottom: 20px;
+    right: 20px;
+}
+
+.squares-pattern-left {
+    @extend .squares-pattern;
+    top: 20px;
+    left: 20px;
+}
+
+
+
+.squares-pattern span {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+}
+
+
+
+@for $i from 1 through 8 {
+    .pattern#{$i} {
+        background: rgba(255, 0, 0, $i/8);
+    }
+}
+
+@for $i from 1 through 8 {
+    .design#{$i} {
+        background: rgba(237, 85, 59, $i/8);
+    }
+}

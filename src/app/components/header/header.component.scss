@@ -1,0 +1,23 @@
+.header {
+    background: #393280;
+ span {
+        color: white;
+        font-weight: 600;
+        font-size: 22px;
+        letter-spacing: 2px;
+
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        column-gap: 25px;
+        margin-bottom: 0px;
+
+        li {
+            i {
+                color: white;
+            }
+        }
+    }
+}

@@ -1,0 +1,100 @@
+section {
+    background: #F7FCFC;
+
+    .header_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+
+        span {
+            color: #7A7A7A;
+            letter-spacing: 2px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .lineH3 {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            &::after,
+            &::before {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: #E0E0E0;
+            }
+
+            h3 {
+                margin: 0 20px;
+                color: #393280;
+                font-weight: 600;
+                font-size: 48px;
+                text-transform: capitalize;
+                white-space: nowrap;
+
+            }
+        }
+
+    }
+
+    .item {
+        display: flex;
+        flex-direction: column;
+
+        ul {
+            align-self: flex-end;
+            list-style: none;
+            display: flex;
+            margin-top: 10px;
+            column-gap: 15px;
+
+            li {
+                color: #173F5F;
+            }
+        }
+
+        .card_item {
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;
+
+            span {
+                color: #74642F;
+                font-weight: 400;
+                font-size: 15px;
+                letter-spacing: 2px;
+                text-transform: capitalize;
+
+            }
+
+            h4 {
+                font-weight: 400;
+                font-size: 26px;
+                text-transform: capitalize;
+                color: #173F5F;
+            }
+        }
+    }
+
+    button {
+        padding: 10px 30px;
+        border: 1px solid #351c75;
+        background: none;
+        color: #351c75;
+        border-radius: 0px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        &:hover {
+            background: #351c75;
+            color: #fff;
+        }
+
+    }
+}

@@ -1,1 +1,37 @@
-<p>home works!</p>
+<div class="slider">
+    <div class="container">
+        <div class="slider_info">
+            @for (slide of slides ; track $index) {
+            <div class="slide row" [class.active]="$index === currentIndex">
+                <div class="slide-text col-md-6">
+                    <h2 class="title">{{ slide.author }}</h2>
+                    <p class="description">{{ slide.description }}</p>
+                    <button>READ MORE →</button>
+                    <!-- Dots -->
+                    <div class="dots">
+                        @for (slide of (slides | slice: 0:3); track $index) {
+                                <span [class.active]="$index === currentIndex" (click)="goToSlide($index)"></span>
+                        }
+                    </div>
+                </div>
+                <div class="slide-img col-md-6 ">
+                    <img src="images/bookSlider.png" class="img-fluid" alt="Book cover" />
+                </div>
+            </div>
+            }
+        </div>
+        <!-- Navigation arrows -->
+        <button class="nav prev" (click)="prevSlide()"><i class="bi bi-arrow-left"></i></button>
+        <button class="nav next" (click)="nextSlide()"><i class="bi bi-arrow-right"></i></button>
+
+
+    </div>
+</div>
+
+<app-slider-categ></app-slider-categ>
+<app-slider-books></app-slider-books>
+<app-featured-book></app-featured-book>
+<app-offer-book></app-offer-book>
+<app-subscribe></app-subscribe>
+<app-articles></app-articles>
+

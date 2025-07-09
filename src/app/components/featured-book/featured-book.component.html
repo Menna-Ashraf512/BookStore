@@ -1,0 +1,42 @@
+<section>
+    <div class="slider h-100">
+        <div class="container h-100">
+            <div class="slider_info h-100">
+                @for (slide of slides ; track $index) {
+                <div class="slide row h-100" [class.active]="$index === currentIndex">
+                    <div class="col-md-7">
+                        <div class="slide-img ">
+                            <img src="images/featuredBook.png" class="img-fluid" alt="Book cover" />
+                        </div>
+                    </div>
+                    <div class="col-md-5 h-100">
+                        <div class="slide-text h-100">
+                            <h2 class="title">Featured book</h2>
+                            <span class="author">By {{slide.author}}</span>
+                            <div class="group_text">
+                                <h3 class="category">{{slide.description}}</h3>
+                                <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac.</p>
+                                <p class="price">$ {{slide.price}}</p>
+                            </div>
+                            <button>View more →</button>
+                        </div>
+                    </div>
+
+                </div>
+            }
+            <!-- Dots -->
+            <div class="dots">
+                @for (slide of (slides | slice: 0:3); track $index) {
+                <span [class.active]="$index === currentIndex" (click)="goToSlide($index)"></span>
+                }
+            </div>
+            </div>
+            <!-- Navigation arrows -->
+            <button class="nav prev" (click)="prevSlide()"><i class="bi bi-arrow-left"></i></button>
+            <button class="nav next" (click)="nextSlide()"><i class="bi bi-arrow-right"></i></button>
+
+
+        </div>
+    </div>
+
+</section>

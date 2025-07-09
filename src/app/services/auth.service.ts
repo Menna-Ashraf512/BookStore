@@ -9,18 +9,18 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
   signIn(data: any): Observable<any> {
-    return this.httpClient.post(`api/auth/login`, data);
+    return this.httpClient.post(`auth/login`, data);
   }
   register(data: any): Observable<any> {
-    return this.httpClient.post(`api/auth/register`, data);
+    return this.httpClient.post(`auth/register`, data);
   }
   forgetPass(email: any): Observable<any> {
-    return this.httpClient.post(`api/auth/forgot-password`, email);
+    return this.httpClient.post(`auth/forgot-password`, email);
   }
   resetPass(data: any): Observable<any> {
-    return this.httpClient.post(`api/auth/reset-password`, data);
+    return this.httpClient.post(`auth/reset-password`, data);
   }
   changePass(data: any): Observable<any> {
-    return this.httpClient.post(`api/auth/change-password`, data);
+    return this.httpClient.post(`auth/change-password`, data);
   }
 }

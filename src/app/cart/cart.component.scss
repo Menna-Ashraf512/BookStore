@@ -1,0 +1,147 @@
+section {
+    .header {
+        background: linear-gradient(82.93deg, #FFE6E6 0%, #F5FFFE 113.52%);
+
+        h3 {
+            @extend .primary_color;
+            font-weight: 500;
+            font-size: 20px;
+
+        }
+    }
+
+    .tablePro {
+        background: linear-gradient(73.93deg, #FFE5E5 11.18%, #F5FFFE 97.53%);
+        box-shadow: 0px 4px 4px 0px #00000040;
+
+        h5 {
+            font-weight: 600;
+            font-size: 24px;
+        }
+
+        .table {
+            background: transparent;
+
+            thead {
+                tr {
+                    th {
+                        font-family: Manrope;
+                        font-weight: 600;
+                        font-style: SemiBold;
+                        font-size: 24px;
+                        @extend .primary_color;
+
+
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    td {
+                        font-weight: 600;
+
+
+                        @extend .primary_color;
+
+
+                    }
+                }
+            }
+        }
+
+        tbody {
+            border-color: transparent;
+
+            .amount {
+                span {
+                    background: white;
+                    width: 15%;
+                }
+
+                button {
+                    background-color: #393280;
+                    color: #F5FFFE;
+                }
+            }
+
+            .delete {
+                @extend .primary_color;
+
+            }
+        }
+
+        thead,
+        tbody,
+        tr,
+        th,
+        td {
+            background: transparent !important;
+        }
+    }
+
+    .cart {
+        background: linear-gradient(180deg, #FFE5E5 0%, #F5FFFE 100%);
+        box-shadow: 0px 4px 4px 0px #00000040;
+
+        h5 {
+            font-weight: 600;
+            font-size: 20px;
+            @extend .primary_color;
+
+        }
+
+        ul li {
+            span {
+                font-weight: 500;
+                font-size: 18px;
+                @extend .primary_color;
+
+            }
+
+            strong {
+                @extend .primary_color;
+
+                font-weight: 500;
+                font-size: 18px;
+            }
+        }
+    }
+
+    .checkOut {
+        background-color: #ED553B;
+        color: #F5FFFE;
+        border-radius: 0px;
+    }
+
+    .shipping {
+        background: linear-gradient(81.34deg, #FFE5E5 6.61%, #F5FFFE 98.67%);
+        box-shadow: 0px 4px 4px 0px #00000040;
+
+        form {
+            label {
+                font-weight: 600;
+                color: #393280;
+                font-size: 20px;
+            }
+
+            input {
+                border: transparent;
+                border-radius: 0px;
+                margin-top: 10px;
+                padding-block: 10px;
+                font-weight: 400;
+                font-size: 20px;
+                color: #09093766;
+
+            }
+        }
+    }
+}
+
+
+
+
+.primary_color {
+    color: #393280;
+}

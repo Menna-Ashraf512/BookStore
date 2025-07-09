@@ -37,7 +37,7 @@ export class ResetPasswordComponent {
 
   send(data: FormGroup) {
     this.isLoading = true;
-    this._authService.resetPass(this.resetPassForm.value).subscribe({
+    this._authService.resetPass(data.value).subscribe({
       next: (res) => {
         this.successMessage = res.message;
         this.resetPassForm.reset();

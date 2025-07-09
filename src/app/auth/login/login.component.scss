@@ -1,6 +1,7 @@
 section {
     width: 60%;
     padding-bottom: 40px;
+
     img {
         margin-block: 40px;
         width: 120px;
@@ -9,8 +10,14 @@ section {
 
     .form {
         margin-block: 45px;
+            .forgetPass {
+                transition: all 0.2s ease-in-out;
+            }
 
+            .forgetPass:hover {
+                text-decoration: underline blue;
 
+            }
         .welcome {
 
             font-weight: 600;
@@ -26,7 +33,6 @@ section {
 
         form {
             margin-top: 50px;
-
             .group_input {
                 margin-bottom: 40px;
 
