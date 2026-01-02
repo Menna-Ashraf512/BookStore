@@ -1,0 +1,128 @@
+.slider{
+  background: linear-gradient(78.83deg, #FFE6E6 8.52%, #F5FFFE 68.88%, #FFFFFF 101.74%);
+  position: relative;
+  margin-bottom: 70px;
+}
+
+.slider_info {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  display: none;
+  flex: 1 0 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.slide.active {
+  display: flex;
+}
+
+.slide-text {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+align-items: start;
+  row-gap: 20px;
+}
+
+.slide-text .title {
+  font-weight: 600;
+  font-size:60px;
+  color: #351c75;
+  margin-bottom: 1rem;
+}
+
+.slide-text .description {
+  font-size: 22px;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.slide-text button {
+  padding: 10px 20px;
+  border: 1px solid #351c75;
+  background: none;
+  color: #351c75;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slide-text button:hover {
+  background: #351c75;
+  color: #fff;
+}
+
+/* Navigation buttons */
+.nav {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid #ED553B;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+  // z-index: 10;
+  i{
+    color: #ED553B;
+  }
+}
+
+.nav.prev {
+  left: 30px;
+}
+
+.nav.next {
+  right: 30px;
+}
+
+/* Dots */
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.dots span {
+  width: 39px;
+  height: 39px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  margin: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+
+.dots span.active {
+  border-color: #e74c3c;
+}
+
+
+.dots span::before {
+  content: '';
+  width: 13px;
+  height: 13px;
+  background-color: #c0c0c0;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.dots span.active::before {
+  background-color: #e74c3c;
+}
+

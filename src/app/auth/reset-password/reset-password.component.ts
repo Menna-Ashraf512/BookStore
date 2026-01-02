@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -35,9 +34,10 @@ export class ResetPasswordComponent {
     ]),
   });
 
-  send(data: FormGroup) {
+
+  send(){
     this.isLoading = true;
-    this._authService.resetPass(data.value).subscribe({
+    this._authService.resetPass(this.resetPassForm.value).subscribe({
       next: (res) => {
         this.successMessage = res.message;
         this.resetPassForm.reset();

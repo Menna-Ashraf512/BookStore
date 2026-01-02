@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -11,10 +11,13 @@ import { ToastrService } from 'ngx-toastr';
   standalone: false,
 })
 export class RegisterComponent {
+
+
   isShowPass = false;
   errorMessage: string = '';
   successMessage:string=''
   isLoading = false;
+
   constructor(
     private _authService: AuthService,
     private _router: Router,
@@ -24,18 +27,26 @@ export class RegisterComponent {
   showPass() {
     this.isShowPass = !this.isShowPass;
   }
+
+
+
   registerForm = new FormGroup({
-    first_name: new FormControl(null, [Validators.required]),
-    last_name: new FormControl(null, [Validators.required]),
-    email: new FormControl(null, [Validators.required, Validators.email]),
+    firstName: new FormControl(null, [Validators.required]),
+    lastName: new FormControl(null, [Validators.required]),
+    userName: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [
       Validators.required,
       Validators.pattern(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{3,}$/
       ),
     ]),
-    role: new FormControl('', [Validators.required]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    phone: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]{10}$/)]),
+    age: new FormControl(null, [Validators.required, Validators.min(1), Validators.max(100)]),
   });
+
+
+
 
   register(data: FormGroup) {
     this.isLoading=true
@@ -48,7 +59,7 @@ export class RegisterComponent {
 
       },
       error: (err) => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = err.errors?.message || 'An error occurred during registration.';
         this._toastrService.error(this.errorMessage,'Sorry');
         this.isLoading = false;
       },

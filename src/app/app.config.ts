@@ -5,16 +5,18 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import {   provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
-import { globalInterceptor } from './interceptor/global.interceptor';
-
+import { globalInterceptor } from './core/interceptor/global.interceptor';
+import { provideNgxStripe } from 'ngx-stripe';
+const stripePublicKey = 'pk_test_51OTjURBQWp069pqTmqhKZHNNd3kMf9TTynJtLJQIJDOSYcGM7xz3DabzCzE7bTxvuYMY0IX96OHBjsysHEKIrwCK006Mu7mKw8';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes), 
+    provideRouter(routes),
     provideClientHydration(withEventReplay()),
-    provideAnimations(), 
+    provideAnimations(),
     provideToastr(),
     provideHttpClient(withFetch(),withInterceptors([globalInterceptor])),
-    
+    provideNgxStripe(stripePublicKey)
+
   ]
 };

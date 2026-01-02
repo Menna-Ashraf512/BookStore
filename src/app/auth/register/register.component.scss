@@ -1,5 +1,5 @@
 section {
-    width: 60%;
+    width: 75%;
     padding-bottom: 40px;
     img {
         margin-block: 40px;
@@ -8,7 +8,8 @@ section {
     }
 
     .form {
-        margin-block: 45px;
+        width: 100%;
+        margin-bottom: 45px;
         .welcome {
             font-weight: 600;
             color: gray;
@@ -18,14 +19,13 @@ section {
         h1 {
             font-weight: 700;
             font-size: 32px;
-            padding-bottom: 20px;
         }
 
         form {
-            margin-top: 50px;
+            margin-top: 30px;
 
             .group_input {
-                margin-bottom: 40px;
+                margin-bottom: 10px;
 
                 label {
                     font-weight: 600;
@@ -64,7 +64,6 @@ section {
         }
 
         .btn:last-child {
-            // background: fff;
             color: #6251DD;
             border: 2px solid #6251DD;
         }

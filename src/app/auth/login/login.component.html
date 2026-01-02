@@ -1,46 +1,60 @@
 <section class="d-flex flex-column  mx-auto">
-    <img src="images/Logo.svg" class="img-fluid " alt="logo">
-    <div class="form">
-        <span class="welcome">Welcome back!</span>
-        <h1>Login to your account</h1>
-        @if(errorMessage){
-        <div class="alert alert-danger" role="alert">
-            <span>
-                {{errorMessage}}
-            </span>
-        </div>
-        }
-        <form [formGroup]="loginForm" class="needs-validation">
-            <div class="group_input">
-                <label for="email" class="form-label">E-mail</label>
-                <input formControlName="email" type="email" class="form-control rounded-2 py-3" id="email" [class]="{
+  <img src="images/Logo.svg" class="img-fluid " alt="logo">
+  <div class="form">
+    <span class="welcome">Welcome back!</span>
+    <h1>Login to your account</h1>
+    @if(errorMessage){
+    <div class="alert alert-danger" role="alert">
+      <span>
+        {{errorMessage}}
+      </span>
+    </div>
+    }
+    <form [formGroup]="loginForm" class="needs-validation">
+      <div class="group_input">
+        <label for="email" class="form-label">E-mail</label>
+        <input formControlName="email" type="email" class="form-control rounded-2 py-3" id="email" [class]="{
                 'is-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched,
                  'is-valid': loginForm.get('email')?.valid && loginForm.get('email')?.touched
-                 }"  placeholder="john@mail.com">
-            </div>
-            <div class="group_input position-relative">
-                <label for="password" class="form-label">Password</label>
-                <input formControlName="password" [type]="isShowPass?'text':'Password'"
-                    class="form-control rounded-2 py-3 mb-2" id="password" [class]="{
+                 }" placeholder="john@mail.com">
+        @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched){
+        <div class="invalid-feedback">
+          E-mail is required.
+        </div>
+        }@else if (loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched){
+        <div class="invalid-feedback">
+          E-mail is invalid.
+        </div>
+        }
+      </div>
+      <div class="group_input position-relative">
+        <label for="password" class="form-label">Password</label>
+        <input formControlName="password" [type]="isShowPass?'text':'Password'" class="form-control rounded-2 py-3 mb-2"
+          id="password" [class]="{
                 'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched,
                  'is-valid': loginForm.get('password')?.valid && loginForm.get('password')?.touched }"
-                  placeholder="Enter your password">
-                <i [class]="isShowPass?'bi bi-eye-fill':'bi bi-eye-slash-fill '"
-                    class="position-absolute top-50 translate-middle-y end-10 fs-4" (click)="showPass()"></i>
-                <input class="check_remember form-check-input me-2" type="checkbox" >
-                <label class="remember">Remember Me</label>
-            </div>
-        </form>
-        <div class="text-end forgetPass">
-            <a routerLink="/auth/forgetPassword" class="text-decoration-none">Forget Password !</a>
+          placeholder="Enter your password">
+        @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
+        <div class="invalid-feedback">
+          Password is required.
         </div>
+        }
+        <i [class]="isShowPass?'bi bi-eye-fill':'bi bi-eye-slash-fill '"
+          class="position-absolute top-50 translate-middle-y end-10 fs-4" (click)="showPass()"></i>
+        <input placeholder="s" class="check_remember form-check-input me-2" type="checkbox">
+        <label class="remember">Remember Me</label>
+      </div>
+    </form>
+    <div class="text-end forgetPass">
+      <a routerLink="/auth/forgetPassword" class="text-decoration-none">Forget Password !</a>
     </div>
-    <div class="btn_login d-flex flex-column gap-3">
-        <button [disabled]="loginForm.invalid" (click)="send(loginForm)" class="btn w-100 py-1">
-@if (isLoading) {
-            <i class="spinner-border spinner-border-sm mb-1 me-2"></i>
-}
-            Login</button>
-        <button class="btn w-100 py-1" routerLink="/auth/register">Register</button>
-    </div>
+  </div>
+  <div class="btn_login d-flex flex-column gap-3">
+    <button [disabled]="loginForm.invalid" (click)="send(loginForm)" class="btn w-100 py-1">
+      @if (isLoading) {
+      <i class="spinner-border spinner-border-sm mb-1 me-2"></i>
+      }
+      Login</button>
+    <button class="btn w-100 py-1" routerLink="/auth/register">Register</button>
+  </div>
 </section>

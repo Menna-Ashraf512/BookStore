@@ -1,33 +1,43 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './guard/auth.guard';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './dashboard/layout/layout.component';
+import { authGuard } from './core/guard/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
 
-{ path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+{ path: 'auth', loadChildren: () => import('./auth/auth.module').then(c => c.AuthModule) },
   {
     path: '',
     component: LayoutComponent,
     children: [
       {
         path: 'home',
-        loadComponent: () => import('./home/home.component').then(m => m.HomeComponent),
+        loadComponent: () => import('./dashboard/components/home/home.component').then(c => c.HomeComponent),
         canActivate: [authGuard]
       },
       {
         path: 'cart',
-        loadComponent: () => import('./cart/cart.component').then(m => m.CartComponent),
+        loadComponent: () => import('./dashboard/components/cart/cart.component').then(c => c.CartComponent),
         canActivate: [authGuard]
       },
       {
         path: 'profile',
-        loadComponent: () => import('./components/profile/profile.component').then(m => m.ProfileComponent),
+        loadComponent: () => import('./dashboard/components/profile/profile.component').then(c => c.ProfileComponent),
         canActivate: [authGuard]
       },
       {
         path: 'allProduct',
-        loadComponent: () => import('./all-product/all-product.component').then(m => m.AllProductComponent),
+        loadComponent: () => import('./dashboard/components/all-product/all-product.component').then(c => c.AllProductComponent),
+        canActivate: [authGuard]
+      },
+      {
+        path: 'payment/:id',
+        loadComponent: () => import('./dashboard/components/payment/payment/payment.component').then(c => c.PaymentComponent),
+        canActivate: [authGuard]
+      },
+      {
+        path: 'orders',
+        loadComponent: () => import('./dashboard/components/orders/orders.component').then(c => c.OrdersComponent),
         canActivate: [authGuard]
       }
     ]

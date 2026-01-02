@@ -1,0 +1,163 @@
+@if (isSpecialRoute()) {
+<nav class="navbar bg-body-tertiary shadow-sm">
+  <div class="container-fluid px-5 d-flex justify-content-between align-items-center">
+    <!-- Logo -->
+    <a class="navbar-brand me-auto">
+      <div class="shape"></div>
+    </a>
+
+    <!-- Main Nav -->
+    <div class="d-flex justify-content-between flex-grow-1">
+      <ul class="navbar-nav main1_nav mx-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active_nav fw-bold"><span>HOME</span></a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/aboutUs" routerLinkActive="active_nav fw-bold"><span>ABOUT US</span></a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/allProduct"><span>BOOKS</span></a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/release" routerLinkActive="active_nav fw-bold"><span>NEW RELEASE</span></a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/contactUs" routerLinkActive="active_nav fw-bold"><span>CONTACT US</span></a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/blog" routerLinkActive="active_nav fw-bold"><span>BLOG</span></a></li>
+      </ul>
+
+      <!-- Icons -->
+      <ul class="navbar-nav gap-3 py-2 d-flex flex-row align-items-center">
+        <li class="nav-item dropdown">
+          <button type="button" class="btn p-0 border-0 bg-transparent d-flex align-items-center" id="profileDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false" title="Profile menu">
+            <i class="bi bi-person fs-3 text-dark"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="profileDropdown">
+            <li>
+              <button type="button" class="dropdown-item d-flex align-items-center gap-2" routerLink="/profile">
+                <i class="bi bi-person-circle"></i> Profile
+              </button>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <button type="button" (click)="logOut()" class="dropdown-item d-flex align-items-center gap-2 text-danger">
+                <i class="bi bi-box-arrow-right"></i> Logout
+              </button>
+            </li>
+          </ul>
+        </li>
+        <li class="position-relative">
+          @if(isCustomer){
+          <i title="cart" role="button" routerLink="/cart" class="bi bi-bag-check fs-4"></i>
+          }
+          @if(cartCount){
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ cartCount }}
+          </span>
+          }
+        </li>
+        <li>
+          @if(isCustomer){
+          <i title="wishList" role="button" class="bi bi-heart fs-5"></i>
+          }
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+}
+@else {
+<nav class="navbar py-1 bg-body-tertiary shadow-sm position-fixed top-0 w-100 z-3">
+  <div class="container-fluid px-5 d-flex justify-content-between align-items-center w-100">
+
+    <!-- Left icon -->
+    <i class="bi bi-grid fs-3 text-danger" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
+      aria-controls="offcanvasMenu"></i>
+
+    <!-- Brand -->
+    <a class="navbar-brand mx-auto">
+      <div class="shape"></div>
+    </a>
+
+    <!-- Right icons -->
+    <ul class="navbar-nav gap-3 d-flex flex-row align-items-center">
+      <li class="nav-item dropdown position-relative">
+        <button class="btn p-0 border-0 bg-transparent d-flex align-items-center" id="profileDropdown"
+          data-bs-toggle="dropdown" aria-expanded="false" title="Profile menu">
+          <i class="bi bi-person fs-3 text-dark"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow-sm position-absolute end-0" aria-labelledby="profileDropdown">
+          <li>
+            <button class="dropdown-item d-flex align-items-center gap-2" routerLink="/profile">
+              <i class="bi bi-person-circle"></i> Profile
+            </button>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li>
+            <button type="button" (click)="logOut()" class="dropdown-item d-flex align-items-center gap-2 text-danger">
+              <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
+          </li>
+        </ul>
+      </li>
+      <li class="position-relative">
+        @if(isCustomer){
+        <i title="cart" role="button" routerLink="/cart" class="bi bi-bag-check fs-4"></i>
+        }
+        @if(cartCount){
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{ cartCount }}
+        </span>
+        }
+      </li>
+      <li>
+        @if(isCustomer){
+        <i title="wishList" role="button" class="bi bi-heart fs-5"></i>
+        }
+      </li>
+    </ul>
+  </div>
+</nav>
+}
+
+<!-- Offcanvas -->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Online Book Store</h5>
+    <button title="close" type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <ul class="navbar-nav main2_nav mx-auto">
+      <li class="nav-item"><a data-bs-dismiss="offcanvas" class="nav-link" routerLink="/home"
+          routerLinkActive="active_nav fw-bold"><span>HOME</span></a></li>
+      <li class="nav-item"><a data-bs-dismiss="offcanvas" class="nav-link" routerLink="/aboutUs"
+          routerLinkActive="active_nav fw-bold"><span>ABOUT US</span></a></li>
+      <li class="nav-item"><a data-bs-dismiss="offcanvas" class="nav-link" routerLink="/allProduct"
+          routerLinkActive="active_nav fw-bold"><span>BOOKS</span></a></li>
+      <li class="nav-item"><a data-bs-dismiss="offcanvas" class="nav-link" routerLink="/release"
+          routerLinkActive="active_nav fw-bold"><span>NEW RELEASE</span></a></li>
+      <li class="nav-item"><a data-bs-dismiss="offcanvas" class="nav-link" routerLink="/contactUs"
+          routerLinkActive="active_nav fw-bold"><span>CONTACT US</span></a></li>
+      <li class="nav-item"><a data-bs-dismiss="offcanvas" class="nav-link" routerLink="/blog"
+          routerLinkActive="active_nav fw-bold"><span>BLOG</span></a></li>
+    </ul>
+
+    <ul class="navbar-nav gap-3 d-flex flex-row align-items-center mt-4">
+      <li>
+        <i data-bs-dismiss="offcanvas" routerLink="/profile" class="bi bi-person fs-3">
+        </i>
+      </li>
+      <li class="position-relative">
+        @if(isCustomer){
+        <i title="cart" role="button" routerLink="/cart" class="bi bi-bag-check fs-4"></i>
+        }
+        @if(cartCount){
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{ cartCount }}
+        </span>
+        }
+      </li>
+      <li>
+        @if(isCustomer){
+        <i data-bs-dismiss="offcanvas" class="bi bi-heart fs-5"></i>
+        }
+      </li>
+    </ul>
+  </div>
+</div>
